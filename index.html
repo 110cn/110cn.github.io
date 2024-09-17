@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宇宙应急响应中心</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: #000;
+            color: #fff;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #ff9;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        p {
+            font-size: 1.2em;
+            line-height: 1.5;
+        }
+        .button {
+            display: inline-block;
+            margin: 20px;
+            padding: 15px 30px;
+            background: #00f;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .button:hover {
+            background: #00d;
+            transform: scale(1.1);
+        }
+        .starfield {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.example.com/starfield.jpg') no-repeat center center fixed;
+            background-size: cover;
+            animation: starfield 30s linear infinite;
+        }
+        @keyframes starfield {
+            0% { background-position: 0 0; }
+            100% { background-position: 100% 100%; }
+        }
+        .animation-container {
+            position: relative;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <div class="starfield"></div>
+    <div class="container animation-container">
+        <h1>欢迎来到宇宙应急响应中心</h1>
+        <p>我们在这里为宇宙中的每一个角落提供紧急响应服务。无论你是在星际旅行还是在外星探险，我们都能为你提供帮助和支持。</p>
+        <a href="#" class="button">紧急联络</a>
+        <a href="#" class="button">应急知识库</a>
+    </div>
+</body>
+</html>
