@@ -1,327 +1,911 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WWZ Player</title>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <style> 
-        :root { 
-            --primary-color: #3a86ff; 
-            --secondary-color: #8338ec; 
-            --bg-color: #edf2f4; 
-            --text-color: #2b2d42; 
-            --border-radius: 16px; 
-            --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
-        } 
- 
-        body { 
-            font-family: 'Arial', sans-serif; 
-            background: var(--bg-color); 
-            margin: 0; 
-            padding: 0; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            min-height: 100vh; 
-            color: var(--text-color); 
-        } 
- 
-        .container { 
-            width: 90%; 
-            max-width: 600px; 
-            background: white; 
-            border-radius: var(--border-radius); 
-            box-shadow: var(--box-shadow); 
-            padding: 20px; 
-            text-align: center; 
-            overflow: hidden; 
-        } 
- 
-        h1 { 
-            font-size: 2rem; 
-            margin-bottom: 20px; 
-            color: var(--primary-color); 
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); 
-        } 
- 
-        input[type="text"] { 
-            width: calc(100% - 20px); 
-            padding: 14px; 
-            margin-bottom: 20px; 
-            border: 1px solid #ccc; 
-            border-radius: var(--border-radius); 
-            font-size: 1rem; 
-            box-shadow: var(--box-shadow); 
-            transition: all 0.3s ease; 
-        } 
- 
-        input[type="text"]:focus { 
-            border-color: var(--primary-color); 
-            outline: none; 
-            box-shadow: 0 4px 12px rgba(58, 134, 255, 0.3); 
-        } 
- 
-        button { 
-            width: 100%; 
-            padding: 14px; 
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color)); 
-            border: none; 
-            border-radius: var(--border-radius); 
-            color: white; 
-            font-size: 1rem; 
-            font-weight: bold; 
-            cursor: pointer; 
-            transition: all 0.3s ease; 
-            box-shadow: var(--box-shadow); 
-            margin-bottom: 10px; /* 增加按钮间距 */ 
-        } 
- 
-        button:hover { 
-            opacity: 0.9; 
-        } 
- 
-        .music-info, .history { 
-            margin-top: 20px; 
-            display: none; 
-        } 
- 
-        .music-info img { 
-            width: 100%; 
-            border-radius: var(--border-radius); 
-            margin-bottom: 15px; 
-            box-shadow: var(--box-shadow); 
-        } 
- 
-        .music-info h2 { 
-            font-size: 1.8rem; 
-            margin-bottom: 10px; 
-            color: var(--primary-color); 
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); 
-        } 
- 
-        .loading { 
-            display: none; 
-            margin-top: 10px; 
-            font-size: 1.2rem; 
-            color: var(--secondary-color); 
-            animation: pulse 1.5s infinite; 
-        } 
- 
-        @keyframes pulse { 
-            0%, 100% { 
-                opacity: 0.6; 
-            } 
-            50% { 
-                opacity: 1; 
-            } 
-        } 
- 
-        .history-item { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            background: var(--bg-color); 
-            padding: 10px; 
-            border-radius: var(--border-radius); 
-            margin-bottom: 10px; 
-            box-shadow: var(--box-shadow); 
-        } 
- 
-        .history-item img { 
-            width: 50px; 
-            height: 50px; 
-            border-radius: var(--border-radius); 
-            margin-right: 10px; 
-        } 
- 
-        .song-info { 
-            display: flex; 
-            align-items: center; 
-        } 
- 
-        .song-info p { 
-            margin: 0; 
-            font-size: 1rem; 
-            color: var(--text-color); 
-        } 
- 
-        audio { 
-            width: 100%; 
-            margin-top: 10px; 
-            outline: none; 
-        } 
- 
-        @media (min-width: 769px) { 
-            body { 
-                padding: 40px 0; 
-            } 
- 
-            .container { 
-                max-width: 800px; 
-                padding: 40px; 
-            } 
- 
-            h1 { 
-                font-size: 2.5rem; 
-            } 
- 
-            input[type="text"], button { 
-                font-size: 1.2rem; 
-                padding: 16px; 
-            } 
- 
-            .music-info h2 { 
-                font-size: 2rem; 
-            } 
-        } 
+    <title>宇宙公安局 - 全宇宙的警察局</title>
+    <style>
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e9ecef; /* Light gray background */
+            color: #495057; /* Darker text color */
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #343a40; /* Dark background */
+            color: #fff;
+            padding: 1.25rem 0;
+            text-align: center;
+            box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
+        }
+
+        nav {
+            text-align: right;
+            padding: 0 1.25rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: background-color 0.2s ease;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        main {
+            padding: 1.25rem;
+        }
+
+        #login-container {
+            width: 90%;
+            max-width: 400px;
+            margin: 2.5rem auto;
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
+        }
+
+        #login-container h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #343a40;
+        }
+
+        #login-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #495057;
+        }
+
+        #login-form input[type="text"],
+        #login-form input[type="password"] {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1.25rem;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            box-sizing: border-box;
+            font-size: 1rem;
+            transition: border-color 0.2s ease;
+        }
+
+        #login-form input[type="text"]:focus,
+        #login-form input[type="password"]:focus {
+            border-color: #80bdff;
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+
+        #login-form button {
+            background-color: #007bff;
+            color: white;
+            padding: 0.75rem 1.25rem;
+            border: none;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            transition: background-color 0.2s ease;
+        }
+
+        #login-form button:hover {
+            background-color: #0056b3;
+        }
+
+        .error {
+            color: #dc3545;
+            margin-top: 0.75rem;
+            text-align: center;
+        }
+
+        #dashboard {
+            display: none;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        section {
+            background-color: #fff;
+            border-radius: 0.5rem;
+            box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
+            margin: 0.75rem;
+            padding: 1.25rem;
+            width: calc(30% - 1.5rem);
+            min-width: 300px;
+            transition: transform 0.2s ease;
+        }
+
+        section:hover {
+            transform: translateY(-0.25rem);
+        }
+
+        section h2 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: #343a40;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 0.75rem;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        button, .detail-btn, #add-detainee-btn, #generate-personnel-btn, #add-spacecraft-btn, #search-law-btn {
+            background-color: #28a745; /* Green */
+            color: white;
+            border: none;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.2s ease;
+        }
+
+        button:hover, .detail-btn:hover, #add-detainee-btn:hover, #generate-personnel-btn:hover, #add-spacecraft-btn:hover, #search-law-btn:hover {
+            background-color: #218838; /* Darker Green */
+        }
+
+        #personnel-info {
+            margin-top: 1.25rem;
+            padding: 1rem;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            background-color: #f8f9fa;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            text-align: center;
+            padding: 0.75rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Input styles for the sections */
+        section input[type="text"],
+        section input[type="number"] {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 0.75rem;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            box-sizing: border-box;
+            font-size: 0.9rem;
+            transition: border-color 0.2s ease;
+        }
+
+        section textarea {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 0.75rem;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            box-sizing: border-box;
+            font-size: 0.9rem;
+            transition: border-color 0.2s ease;
+            resize: vertical; /* Allow vertical resizing */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            section {
+                width: calc(50% - 1.5rem);
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                width: 100%;
+            }
+        }
+
+        /* Improved detail button style */
+        .detail-btn {
+            background-color: #007bff; /* Blue */
+            color: white;
+            border: none;
+            padding: 0.4rem 0.6rem;
+            border-radius: 0.2rem;
+            cursor: pointer;
+            font-size: 0.8rem;
+            margin-left: 0.5rem;
+        }
+
+        .detail-btn:hover {
+            background-color: #0056b3; /* Darker Blue */
+        }
+
+        /* Consistent button styles for action buttons */
+        #add-detainee-btn, #generate-personnel-btn, #add-spacecraft-btn, #search-law-btn {
+            background-color: #17a2b8; /* Teal */
+            color: white;
+            border: none;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            margin-bottom: 0.75rem;
+            display: block;
+            width: 100%;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        #add-detainee-btn:hover, #generate-personnel-btn:hover, #add-spacecraft-btn:hover, #search-law-btn:hover {
+            background-color: #138496; /* Darker Teal */
+        }
+
+        /* Form styles for adding detainees */
+        #detainee-form label {
+            display: block;
+            margin-bottom: 0.25rem;
+            color: #495057;
+        }
+
+        #detainee-form input[type="text"],
+        #detainee-form textarea {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 0.75rem;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            box-sizing: border-box;
+            font-size: 0.9rem;
+            transition: border-color 0.2s ease;
+        }
+
+        /* Table Style */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 0.5rem;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+
+        /* Law Search styles */
+        #law-search {
+            width: 100%;
+            padding: 0.6rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            box-sizing: border-box;
+        }
+
+        #law-results {
+            list-style: none;
+            padding: 0;
+        }
+
+        #law-results li {
+            padding: 0.75rem;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        #law-results li:last-child {
+            border-bottom: none;
+        }
+
+                /* New styles for Spacecraft */
+        #spacecraft-form {
+            margin-bottom: 1rem;
+        }
+
+        #spacecraft-form label {
+            display: block;
+            margin-bottom: 0.25rem;
+            color: #495057;
+        }
+
+        #spacecraft-form input[type="text"] {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 0.75rem;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            box-sizing: border-box;
+            font-size: 0.9rem;
+        }
+
+        #spacecraft-list {
+            padding: 0;
+            list-style: none;
+        }
+
+        #spacecraft-list li {
+            padding: 0.75rem;
+            border-bottom: 1px solid #dee2e6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #spacecraft-list li:last-child {
+            border-bottom: none;
+        }
+
+        .spacecraft-details {
+          padding: 1rem;
+          margin-top: 1rem;
+          border: 1px solid #ced4da;
+          border-radius: 0.25rem;
+          background-color: #f8f9fa;
+        }
+
+        .spacecraft-details h3 {
+          margin-top: 0;
+          margin-bottom: 0.75rem;
+          color: #343a40;
+        }
+
+        .spacecraft-details p {
+          margin-bottom: 0.5rem;
+        }
+
+        .spacecraft-details button {
+            background-color: #007bff; /* Blue */
+            color: white;
+            border: none;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .spacecraft-details button:hover {
+            background-color: #0056b3; /* Darker Blue */
+        }
+
+        .table-container {
+          overflow-x: auto;
+        }
+
+        #detail-modal {
+          display: none; /* Hidden by default */
+          position: fixed; /* Stay in place */
+          z-index: 1; /* Sit on top */
+          left: 0;
+          top: 0;
+          width: 100%; /* Full width */
+          height: 100%; /* Full height */
+          overflow: auto; /* Enable scroll if needed */
+          background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content/Box */
+        .modal-content {
+          background-color: #fefefe;
+          margin: 15% auto; /* 15% from the top and centered */
+          padding: 20px;
+          border: 1px solid #888;
+          width: 80%; /* Could be more or less, depending on screen size */
+        }
+
+        /* The Close Button */
+        .close {
+          color: #aaa;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+          color: black;
+          text-decoration: none;
+          cursor: pointer;
+        }
+
+         /* First Modal Styles */
+        #first-modal {
+            display: none;
+            position: fixed;
+            z-index: 2; /* Ensure it's on top of other modals */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .first-modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            text-align: center; /* Center the content */
+        }
+
+        .first-close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .first-close:hover,
+        .first-close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .first-modal-content p {
+            margin-bottom: 1rem;
+        }
+
+        .first-modal-content a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .first-modal-content a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🎵 WWZ Music Player</h1>
-        <input type="text" id="songName" placeholder="Search for a song...">
-        <button onclick="fetchSong()">Play Song</button>
-        <button id="loopButton" onclick="toggleLoop()">Enable Loop</button>
-        <button id="historyButton" onclick="toggleHistory()">Show History</button>
-        <div class="loading" id="loading">Loading...</div>
-        <div class="music-info" id="musicInfo">
-            <h2 id="songTitle"></h2>
-            <img id="songImage" alt="Album Art">
-            <audio id="audioPlayer" controls></audio>
+
+    <header>
+        <h1>宇宙公安局 - 全宇宙的警察局</h1>
+        <nav>
+            <a href="#" id="logout-btn">注销</a>
+        </nav>
+    </header>
+
+    <main>
+        <div id="login-container">
+            <h2>登录</h2>
+            <form id="login-form">
+                <label for="username">用户名:</label>
+                <input type="text" id="username" name="username" required><br><br>
+                <label for="password">密码:</label>
+                <input type="password" id="password" name="password" required><br><br>
+                <button type="submit">登录</button>
+                <p id="login-error" class="error"></p>
+            </form>
         </div>
-        <div id="historyContainer" class="history"></div>
-    </div>
+
+        <div id="dashboard" style="display:none;">
+            <section id="alerts">
+                <h2>待处理警情</h2>
+                <ul id="alert-list">
+                    <li>警情 1: 发现可疑飞船停靠在星港 7. <button class="detail-btn" data-detail="警情 1 详情...">查看详情</button></li>
+                    <li>警情 2: 报告称在小行星带发现非法采矿活动. <button class="detail-btn" data-detail="警情 2 详情...">查看详情</button></li>
+                    <li>警情 3: 收到关于星际海盗袭击商船的求救信号. <button class="detail-btn" data-detail="警情 3 详情...">查看详情</button></li>
+                </ul>
+            </section>
+
+            <section id="fugitives">
+                <h2>待抓捕逃犯</h2>
+                <ul id="fugitive-list">
+                    <li>逃犯 1: 姓名 - Zorgon, 罪名 - 星际诈骗. <button class="detail-btn" data-detail="Zorgon 详细信息...">查看详情</button></li>
+                    <li>逃犯 2: 姓名 - Xylar, 罪名 - 非法武器交易. <button class="detail-btn" data-detail="Xylar 详细信息...">查看详情</button></li>
+                    <li>逃犯 3: 姓名 - Krill, 罪名 - 宇宙走私. <button class="detail-btn" data-detail="Krill 详细信息...">查看详情</button></li>
+                </ul>
+            </section>
+
+            <section id="detention">
+                <h2>拘留管理系统</h2>
+                <form id="detainee-form">
+                    <label for="detainee-name">姓名:</label>
+                    <input type="text" id="detainee-name" name="detainee-name" required><br><br>
+                    <label for="detainee-reason">拘留原因:</label>
+                    <textarea id="detainee-reason" name="detainee-reason" rows="3" required></textarea><br><br>
+                    <button type="button" id="add-detainee-btn">添加拘留人员</button>
+                </form>
+                <div class="table-container">
+                  <table id="detainee-table">
+                    <thead>
+                      <tr>
+                        <th>姓名</th>
+                        <th>拘留原因</th>
+                        <th>操作</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!-- Detainee records will be added here -->
+                    </tbody>
+                  </table>
+                </div>
+            </section>
+
+            <section id="personnel">
+                <h2>人员信息查询系统</h2>
+                <label for="personnel-name-input">姓名:</label>
+                <input type="text" id="personnel-name-input" required><br><br>
+                <label for="personnel-id-input">身份证号:</label>
+                <input type="text" id="personnel-id-input" required><br><br>
+                <button id="generate-personnel-btn">查询人员信息</button>
+                <div id="personnel-info">
+                    <p>姓名：<span id="personnel-name"></span></p>
+                    <p>职位：<span id="personnel-title"></span></p>
+                    <p>星系：<span id="personnel-location"></span></p>
+                    <p>联系方式：<span id="personnel-contact"></span></p>
+                </div>
+            </section>
+
+            <section id="spacecraft">
+                <h2>飞船管理系统</h2>
+                <form id="spacecraft-form">
+                    <label for="spacecraft-name">飞船名称:</label>
+                    <input type="text" id="spacecraft-name" required><br><br>
+                    <label for="spacecraft-model">飞船型号:</label>
+                    <input type="text" id="spacecraft-model" required><br><br>
+                    <label for="spacecraft-status">飞船状态:</label>
+                    <input type="text" id="spacecraft-status" required><br><br>
+                    <button type="button" id="add-spacecraft-btn">添加飞船</button>
+                </form>
+                <ul id="spacecraft-list">
+                </ul>
+            </section>
+
+            <section id="galactic-law">
+                <h2>银河法律条文查询</h2>
+                <input type="text" id="law-search" placeholder="输入关键词搜索法律条文">
+                <button id="search-law-btn">搜索</button>
+                <ul id="law-results">
+                   <li>暂无结果</li>
+                </ul>
+            </section>
+        </div>
+
+          <!-- The Detail Modal -->
+          <div id="detail-modal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+              <span class="close">×</span>
+              <p id="modal-detail-content">Some text in the Modal..</p>
+            </div>
+
+          </div>
+
+        <!-- First Modal -->
+        <div id="first-modal" class="modal">
+            <div class="first-modal-content">
+                <span class="first-close">×</span>
+                <p>宇宙天地银行的安全，由我们守护--宇宙公安局</p>
+                <a href="https://91plus.github.io/" target="_blank">宇宙天地银行官网</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 宇宙公安局 - 全宇宙的警察局</p>
+    </footer>
 
     <script>
-        let audioPlayer = document.getElementById('audioPlayer');
-        let history = JSON.parse(localStorage.getItem('history')) || [];
-        let isLooping = false;
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('login-form');
+            const dashboard = document.getElementById('dashboard');
+            const loginContainer = document.getElementById('login-container');
+            const logoutBtn = document.getElementById('logout-btn');
+            const loginError = document.getElementById('login-error');
 
-        // 设置 MediaSession 以支持后台播放控制
-        if ('mediaSession' in navigator) {
-            navigator.mediaSession.setActionHandler('play', () => audioPlayer.play());
-            navigator.mediaSession.setActionHandler('pause', () => audioPlayer.pause());
-            navigator.mediaSession.setActionHandler('seekbackward', () => {
-                audioPlayer.currentTime = Math.max(audioPlayer.currentTime - 10, 0);
-            });
-            navigator.mediaSession.setActionHandler('seekforward', () => {
-                audioPlayer.currentTime = Math.min(audioPlayer.currentTime + 10, audioPlayer.duration);
-            });
-        }
+            // Detainee Management
+            const addDetaineeBtn = document.getElementById('add-detainee-btn');
+            const detaineeNameInput = document.getElementById('detainee-name');
+            const detaineeReasonInput = document.getElementById('detainee-reason');
+            const detaineeTableBody = document.getElementById('detainee-table').querySelector('tbody');
+            let detainees = JSON.parse(localStorage.getItem('detainees')) || [];
 
-        async function fetchSong() {
-            const songName = document.getElementById('songName').value.trim();
-            if (!songName) {
-                alert('Please enter a song name!');
-                return;
+            // Personnel Information
+            const generatePersonnelBtn = document.getElementById('generate-personnel-btn');
+            const personnelNameInput = document.getElementById('personnel-name-input');
+            const personnelIdInput = document.getElementById('personnel-id-input');
+            const personnelName = document.getElementById('personnel-name');
+            const personnelTitle = document.getElementById('personnel-title');
+            const personnelLocation = document.getElementById('personnel-location');
+            const personnelContact = document.getElementById('personnel-contact');
+
+            // Spacecraft Management
+            const addSpacecraftBtn = document.getElementById('add-spacecraft-btn');
+            const spacecraftNameInput = document.getElementById('spacecraft-name');
+            const spacecraftModelInput = document.getElementById('spacecraft-model');
+            const spacecraftStatusInput = document.getElementById('spacecraft-status');
+            const spacecraftList = document.getElementById('spacecraft-list');
+            let spacecrafts = JSON.parse(localStorage.getItem('spacecrafts')) || [];
+
+            const lawSearchInput = document.getElementById('law-search');
+            const searchLawBtn = document.getElementById('search-law-btn');
+            const lawResults = document.getElementById('law-results');
+
+            // Detail Modal
+            const detailModal = document.getElementById("detail-modal");
+            const detailModalContent = document.getElementById("modal-detail-content");
+            const detailSpan = document.getElementsByClassName("close")[0];
+
+            // First Modal Elements
+            const firstModal = document.getElementById("first-modal");
+            const firstSpan = document.getElementsByClassName("first-close")[0];
+
+            // Function to show detail modal
+            function showDetailModal(detail) {
+              detailModalContent.textContent = detail;
+              detailModal.style.display = "block";
             }
 
-            const apiUrl = `https://api.lolimi.cn/API/wydg/?msg=${encodeURIComponent(songName)}&n=1`;
-            const loadingElement = document.getElementById('loading');
-            const musicInfoElement = document.getElementById('musicInfo');
-            loadingElement.style.display = 'block';
-            musicInfoElement.style.display = 'none';
+            // Function to hide detail modal
+            function hideDetailModal() {
+              detailModal.style.display = "none";
+            }
 
-            try {
-                const response = await axios.get(apiUrl);
-                if (response.data.code === 200) {
-                    const { img, name, mp3 } = response.data;
-                    history.push({ name, img, mp3 });
-                    localStorage.setItem('history', JSON.stringify(history));
-                    updateHistory();
+            // Close the detail modal
+            detailSpan.onclick = function() {
+              hideDetailModal();
+            }
 
-                    setTimeout(() => {
-                        document.getElementById('songTitle').textContent = name;
-                        document.getElementById('songImage').src = img;
-                        audioPlayer.src = mp3;
-                        audioPlayer.play();
-                        loadingElement.style.display = 'none';
-                        musicInfoElement.style.display = 'block';
+            // Close the detail modal when clicking outside the modal content
+            window.onclick = function(event) {
+              if (event.target == detailModal) {
+                hideDetailModal();
+              }
+            }
 
-                        // 设置媒体会话元信息
-                        if ('mediaSession' in navigator) {
-                            navigator.mediaSession.metadata = new MediaMetadata({
-                                title: name,
-                                artist: 'Unknown Artist',
-                                album: 'WWZ Album',
-                                artwork: [
-                                    { src: img, sizes: '512x512', type: 'image/png' }
-                                ]
-                            });
-                        }
-                    }, 500);
-                } else {
-                    alert('Song not found. Please try again.');
-                    loadingElement.style.display = 'none';
+             // Function to show first modal
+            function showFirstModal() {
+                firstModal.style.display = "block";
+            }
+
+            // Function to hide first modal
+            function hideFirstModal() {
+                firstModal.style.display = "none";
+            }
+
+            // Close the first modal
+            firstSpan.onclick = function() {
+                hideFirstModal();
+            }
+
+            // Close the first modal when clicking outside the modal content
+            window.onclick = function(event) {
+                if (event.target == firstModal) {
+                    hideFirstModal();
                 }
-            } catch (error) {
-                console.error(error);
-                alert('An error occurred. Please try again later.');
-                loadingElement.style.display = 'none';
             }
-        }
 
-        function toggleLoop() {
-            isLooping = !isLooping;
-            audioPlayer.loop = isLooping;
-            document.getElementById('loopButton').textContent = isLooping ? 'Disable Loop' : 'Enable Loop';
-        }
 
-        function toggleHistory() {
-            const historyContainer = document.getElementById('historyContainer');
-            historyContainer.style.display = historyContainer.style.display === 'none' ? 'block' : 'none';
-        }
-
-        function updateHistory() {
-            const historyContainer = document.getElementById('historyContainer');
-            historyContainer.innerHTML = '';
-
-            history.forEach((song, index) => {
-                const historyItem = document.createElement('div');
-                historyItem.classList.add('history-item');
-
-                const songImage = document.createElement('img');
-                songImage.src = song.img;
-
-                const songInfo = document.createElement('div');
-                songInfo.classList.add('song-info');
-                const songName = document.createElement('p');
-                songName.textContent = song.name;
-                songInfo.appendChild(songName);
-
-                historyItem.appendChild(songImage);
-                historyItem.appendChild(songInfo);
-
-                historyItem.addEventListener('click', () => {
-                    playSongFromHistory(index);
+            // Function to render spacecrafts
+            function renderSpacecrafts() {
+                spacecraftList.innerHTML = '';
+                spacecrafts.forEach((spacecraft, index) => {
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `
+                        ${spacecraft.name} - ${spacecraft.model} (${spacecraft.status})
+                        <button class="detail-btn" data-index="${index}">查看详情</button>
+                    `;
+                    spacecraftList.appendChild(listItem);
                 });
 
-                historyContainer.appendChild(historyItem);
-            });
-        }
-
-        function playSongFromHistory(index) {
-            const song = history[index];
-            document.getElementById('songTitle').textContent = song.name;
-            document.getElementById('songImage').src = song.img;
-            audioPlayer.src = song.mp3;
-
-            const musicInfoElement = document.getElementById('musicInfo');
-            musicInfoElement.style.display = 'block';
-
-            audioPlayer.play();
-        }
-
-        // 保证音频在切后台时继续播放
-        document.addEventListener('visibilitychange', () => {
-            if (document.visibilityState === 'hidden' && !audioPlayer.paused) {
-                audioPlayer.play();
+                 // Add event listeners to detail buttons
+                document.querySelectorAll('#spacecraft-list .detail-btn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const index = this.dataset.index;
+                        const spacecraft = spacecrafts[index];
+                        showDetailModal(`飞船名称: ${spacecraft.name}, 型号: ${spacecraft.model}, 状态: ${spacecraft.status}`);
+                    });
+                });
             }
-        });
 
-        // 初始显示历史记录
-        updateHistory();
+
+            // Load and render detainees
+            function renderDetainees() {
+              detaineeTableBody.innerHTML = '';
+              detainees.forEach((detainee, index) => {
+                const row = detaineeTableBody.insertRow();
+                row.innerHTML = `
+                  <td>${detainee.name}</td>
+                  <td>${detainee.reason}</td>
+                  <td><button class="delete-btn" data-index="${index}">删除</button></td>
+                `;
+              });
+
+              // Add event listeners to delete buttons
+              document.querySelectorAll('.delete-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                  const index = this.dataset.index;
+                  detainees.splice(index, 1);
+                  localStorage.setItem('detainees', JSON.stringify(detainees));
+                  renderDetainees();
+                });
+              });
+            }
+
+            // Load saved login state
+            const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+            if (isLoggedIn) {
+                loginContainer.style.display = 'none';
+                dashboard.style.display = 'flex';
+                dashboard.style.flexWrap = 'wrap';
+                renderDetainees();
+                renderSpacecrafts();
+                showFirstModal(); // Show the first modal after login
+            }
+
+            loginForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+
+                if (username === '110' && password === '111') {
+                    loginContainer.style.display = 'none';
+                    dashboard.style.display = 'flex';
+                    dashboard.style.flexWrap = 'wrap';
+                    loginError.textContent = '';
+                    localStorage.setItem('isLoggedIn', 'true');
+                    renderDetainees(); // Render detainees after login
+                    renderSpacecrafts();
+                    showFirstModal(); // Show the first modal after login
+                } else {
+                    loginError.textContent = '用户名或密码错误';
+                }
+            });
+
+            logoutBtn.addEventListener('click', function(event) {
+                event.preventDefault();
+                dashboard.style.display = 'none';
+                loginContainer.style.display = 'block';
+                document.getElementById('username').value = '';
+                document.getElementById('password').value = '';
+                localStorage.setItem('isLoggedIn', 'false');
+            });
+
+            // Add Detainee
+            addDetaineeBtn.addEventListener('click', function() {
+                const detaineeName = detaineeNameInput.value;
+                const detaineeReason = detaineeReasonInput.value;
+
+                if (detaineeName && detaineeReason) {
+                    detainees.push({ name: detaineeName, reason: detaineeReason });
+                    localStorage.setItem('detainees', JSON.stringify(detainees));
+                    detaineeNameInput.value = '';
+                    detaineeReasonInput.value = '';
+                    renderDetainees();
+                } else {
+                    alert('请填写姓名和拘留原因.');
+                }
+            });
+
+            // Personnel Information
+            generatePersonnelBtn.addEventListener('click', function() {
+                const name = personnelNameInput.value;
+                const id = personnelIdInput.value;
+
+                // Simple ID validation (e.g., length check)
+                if (id.length !== 18 && id.length !== 15) {
+                    alert('请输入有效的身份证号.');
+                    return;
+                }
+
+                if (name === '' || id === '') {
+                    alert('请填写姓名和身份证号。');
+                    return;
+                }
+
+                const titles = ['警员', '警长', '指挥官', '技术员', '分析师'];
+                const locations = ['太阳系', '比邻星', '半人马座', '仙女星系', '克普勒-186f'];
+                const contact = '123-456-7890'; // 可以生成随机电话号码
+
+                personnelName.textContent = name;
+                personnelTitle.textContent = titles[Math.floor(Math.random() * titles.length)];
+                personnelLocation.textContent = locations[Math.floor(Math.random() * locations.length)];
+                personnelContact.textContent = contact;
+
+                // Store the personnel information in localStorage
+                const personnelInfo = {
+                  name: name,
+                  title: personnelTitle.textContent,
+                  location: personnelLocation.textContent,
+                  contact: personnelContact.textContent
+                };
+
+                localStorage.setItem('personnelInfo', JSON.stringify(personnelInfo));
+            });
+
+            // Load the personnel information from localStorage on page load
+            const savedPersonnelInfo = localStorage.getItem('personnelInfo');
+
+            if (savedPersonnelInfo) {
+              const personnelInfo = JSON.parse(savedPersonnelInfo);
+
+              personnelName.textContent = personnelInfo.name;
+              personnelTitle.textContent = personnelInfo.title;
+              personnelLocation.textContent = personnelInfo.location;
+              personnelContact.textContent = personnelInfo.contact;
+            }
+
+             // Add Spacecraft
+            addSpacecraftBtn.addEventListener('click', function() {
+                const name = spacecraftNameInput.value;
+                const model = spacecraftModelInput.value;
+                const status = spacecraftStatusInput.value;
+
+                if (name && model && status) {
+                    spacecrafts.push({ name: name, model: model, status: status });
+                    localStorage.setItem('spacecrafts', JSON.stringify(spacecrafts));
+                    spacecraftNameInput.value = '';
+                    spacecraftModelInput.value = '';
+                    spacecraftStatusInput.value = '';
+                    renderSpacecrafts();
+                } else {
+                    alert('请填写飞船名称、型号和状态.');
+                }
+            });
+
+
+            searchLawBtn.addEventListener('click', function() {
+                const searchTerm = lawSearchInput.value.toLowerCase();
+
+                // Simulate search results (replace with actual search logic)
+                const fakeResults = [
+                    { title: "星际交通法", description: "规范星际航行的法律条文" },
+                    { title: "行星保护法", description: "保护行星生态环境的法律" },
+                    { title: "宇宙贸易法", description: "规范宇宙贸易活动的法律" }
+                ];
+
+                // Clear previous results
+                lawResults.innerHTML = '';
+
+                const filteredResults = fakeResults.filter(result => {
+                    return result.title.toLowerCase().includes(searchTerm) || result.description.toLowerCase().includes(searchTerm);
+                });
+
+                if (filteredResults.length > 0) {
+                    filteredResults.forEach(result => {
+                        const listItem = document.createElement('li');
+                        listItem.innerHTML = `<strong>${result.title}</strong>: ${result.description}`;
+                        lawResults.appendChild(listItem);
+                    });
+                } else {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = '未找到相关法律条文.';
+                    lawResults.appendChild(listItem);
+                }
+            });
+
+            // Event listeners for initial detail buttons
+            document.querySelectorAll('.detail-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    showDetailModal(this.dataset.detail);
+                });
+            });
+
+             // Initial rendering of data from localStorage
+            renderSpacecrafts();
+        });
     </script>
 </body>
 </html>
